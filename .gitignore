@@ -5,6 +5,9 @@ node_modules
 # local env files
 .env.local
 .env.*.local
+.env
+
+
 
 # Log files
 npm-debug.log*
@@ -13,6 +16,8 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor directories and files
+.bitmap
+bit*
 .idea
 .vscode
 *.suo

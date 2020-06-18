@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <here-map 
+      address="Via Nazionale,Roma,Italy" 
+      destination="Via Conca d'Oro,Roma,Italy" 
+      :traffic="true" 
+      :infoBox="true" 
+      box="bottom left">
+      <div slot="infoBox">
+        <p><small>This is a demo of vue-here-map</small></p>
+      </div>
+    </here-map>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HereMap from '@/components/HereMaps.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    HereMap
   }
 }
 </script>
