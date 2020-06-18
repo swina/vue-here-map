@@ -1,6 +1,9 @@
 # vue-here-map
 
-**vue-here-map** is an advanced vue component to draw detailed map in your Vue components.
+**vue-here-map** is an advanced vue component to render detailed map in your Vue component. 
+
+vue-here-map uses [here.com](here.com) map service and in order to work you need an APIKEY that you can get with a [FREEMIUM account](https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account).
+
 
 ## Features
 
@@ -10,7 +13,6 @@
 - traffic indication (with incidents and viability)
 - markers custom colors
 - 4 positions info box with your content
-- 
 
 ## Usage
 
@@ -58,6 +60,16 @@ export default {
 }
 </script>
 ```
+
+4. Create a .env to set the APIKEY
+
+In order to use the component you need a valid APIKEY from here.com.
+Create an .env file in the root of your project and add the following line. This way your APIKEY will be never exposed in the client.
+
+```
+VUE_APP_HERE_APIKEY=your_here_api_key
+```
+
 
 ## Attributes
 
