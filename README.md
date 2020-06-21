@@ -113,6 +113,11 @@ Autocomplete mode destination address. Using the destination address **vue-here-
 
 ### Options 
 
+**ui**  *(true,**false**)*
+
+Enable map default UI (zoom,extra options)
+
+
 **traffic** *(true,**false**)*
 
 Display traffic information. You can omit this attribute since the map has is own UI from where you can enable traffic information (incidents included)
@@ -146,8 +151,13 @@ Set the color of the marker(s). When using with destination assign 2 colors sepa
 When enabled clicking on city names display the population (if available)
 
 
+### Version 0.0.2
+- fixed minor issues
+- add **ui** attribute to display default user interface and controls
+- fixed autocomplete function
 
-## Version 0.0.1
+
+### Version 0.0.1
 First release
 
 ## Issues 
