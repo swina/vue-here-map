@@ -64,7 +64,9 @@ export default {
 4. Create a .env to set the APIKEY
 
 In order to use the component you need a valid APIKEY from here.com.
-Create an .env file in the root of your project and add the following line. This way your APIKEY will be never exposed in the client.
+Create an .env file in the root of your project and add the following line.
+
+***We suggest to create a domain whitelist from your account settings in order to use your APIKEY only from those domains***
 
 ```
 VUE_APP_HERE_APIKEY=your_here_api_key
@@ -73,17 +75,51 @@ VUE_APP_HERE_APIKEY=your_here_api_key
 
 ## Attributes
 
-**address** *(required)*
+### Coords mode 
 
-Origin/Center address to display on the map
+**origin** *(string lat,lng values separated by comma)*
 
-**destination**
+Set origin coords to display on the map. 
 
-Destination address. Using the destination address **vue-here-map** automatically calculate and visualize the routing
+```
+<here-map origin="41.89953,12.4914"/>
+```
+
+**endpoint** *(string lat,lng values separated by comma)*
+
+Set endpoint coords to display on the map (auto routing mode)
+
+```
+<here-map origin="41.89953,12.4914" endpoint="41.94032,12.5247"/>
+```
+
+### Autocomplete mode 
+
+**address** *(string)*
+
+Autocomplete mode origin address to display on the map as the origin point (Start address in routing mode)
+
+```
+<here-map address="5th Ave,New York,USA"/>
+```
+
+**destination** *(string)*
+
+Autocomplete mode destination address. Using the destination address **vue-here-map** automatically calculate and visualize the routing
+
+```
+<here-map address="5th Ave,New York,USA" destination="42nd Street,New York,USA"/>
+```
+
+### Options 
 
 **traffic** *(true,**false**)*
 
 Display traffic information. You can omit this attribute since the map has is own UI from where you can enable traffic information (incidents included)
+
+```
+<here-map address="5th Ave,New York,USA" destination="42nd Street,New York,USA" :traffic="true"/>
+```
 
 **infoBox** *(true,**false**)*
 
@@ -108,6 +144,8 @@ Set the color of the marker(s). When using with destination assign 2 colors sepa
 **interactive** *(true,**false**)*
 
 When enabled clicking on city names display the population (if available)
+
+
 
 ## Version 0.0.1
 First release

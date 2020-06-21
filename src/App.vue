@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <here-map 
-      address="Via Nazionale,Roma,Italy" 
-      destination="Via Conca d'Oro,Roma,Italy" 
+    <here-map
+      address="5th Ave,New York,USA" 
+      destination="Park Ave.,New York,USA"
       :traffic="true" 
       :infoBox="true" 
+      :ui="false"
       box="bottom left">
       <div slot="infoBox">
         <p><small>This is a demo of vue-here-map</small></p>
       </div>
     </here-map>
   </div>
+  <!--       address="Via Nazionale,Roma,Italy" 
+      destination="Via Conca d'Oro,Roma,Italy" 
+-->
 </template>
 
 <script>

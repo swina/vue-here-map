@@ -5,11 +5,12 @@
       <slot name="infoBox"></slot>
     </div>
     <div class="here-map-loading" v-if="loading">Loading map ...</div>
-    <div class="here-map-loading" v-if="options" title="Info" >
-      <svg width="16" height="16" viewBox="0 0 16 16" style="position:absolute;right:2" @click="displayOptions=!displayOptions">
+     <svg v-if="options" width="16" height="16" viewBox="0 0 16 16" title="Options" style="cursor:pointer;position:absolute;top:2;right:2;z-index:19999" @click="displayOptions=!displayOptions">
         <path class="path1" d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM1.5 8c0-3.59 2.91-6.5 6.5-6.5 1.712 0 3.269 0.662 4.43 1.744l-6.43 2.756-2.756 6.43c-1.082-1.161-1.744-2.718-1.744-4.43zM9.143 9.143l-4.001 1.715 1.715-4.001 2.286 2.286zM8 14.5c-1.712 0-3.269-0.662-4.43-1.744l6.43-2.756 2.756-6.43c1.082 1.161 1.744 2.718 1.744 4.43 0 3.59-2.91 6.5-6.5 6.5z"></path>
       </svg>
-      <div v-if="displayOptions">
+    <div class="here-map-loading" v-if="options" title="Info" >
+     
+      <div v-if="displayOptions" style="padding:.2rem;">
         <small v-if="options.traffic"><p>{{options.traffic}}</p></small>
         <small v-if="options.routing">
           <p>{{options.routing.title}}</p>
@@ -61,8 +62,11 @@ export default {
   },
   watch:{
     center(coords){
-      if ( coords ) {
+      if ( coords.lat && coords.lng ) {
         this.createMap(coords)
+        if ( this.$attrs.destination ){
+          this.findAddress ( this.$attrs.destination , 'destination' )
+        }
       }
     },
     destination(coords){
@@ -86,7 +90,12 @@ export default {
 
       this.$attrs.traffic ? map.addLayer(defaultLayers.vector.normal.traffic) : null
       var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map))
-      var ui = H.ui.UI.createDefault(map, defaultLayers,window.navigator.userLanguage || window.navigator.language)
+      
+      if ( typeof ( this.$attrs.ui ) === 'undefined' || this.$attrs.ui ){
+        var ui = H.ui.UI.createDefault(map, defaultLayers,window.navigator.userLanguage || window.navigator.language)
+        this.ui = ui
+      }
+
       if ( !this.$attrs.destination ){
         if ( this.$attrs.bubble ){
           this.setBubble ( coords , ui )
@@ -97,11 +106,11 @@ export default {
       }
       this.loading = false
       this.map = map
-      this.ui = ui
       this.setInteractive(map)
     },
 
     createRouting(coords){
+      if ( !coords.lat && !coords.lng ) { return }
       let vm = this
       let destination = [ coords.lat , coords.lng ]
       let start = [ this.center.lat , this.center.lng ]
@@ -161,6 +170,7 @@ export default {
           vm.center = result.items[0].position 
         } else {
           vm.destination = result.items[0].position
+          vm.createRouting(vm.destination)
         }
         return 
       })
@@ -171,13 +181,13 @@ export default {
          await vm.findAddress ( address,scope )
       }
       if ( this.$attrs.origin ){
-        this.center = this.$attrs.origin
+        this.center = { lat : this.$attrs.origin.split(',')[0] , lng: this.$attrs.origin.split(',')[1] }
+      }
+      if ( this.$attrs.endpoint ){
+        this.destination = { lat : this.$attrs.endpoint.split(',')[0] , lng: this.$attrs.endpoint.split(',')[1] }
       }
       if ( this.$attrs.address ){
         originGeoLocation( this.$attrs.address , 'origin' )
-      }
-      if ( this.$attrs.destination ){
-        originGeoLocation( this.$attrs.destination , 'destination' )
       }
     },
 
@@ -275,10 +285,11 @@ export default {
   position:absolute;
   top:2px;
   right:2px;
+  width:10rem;
   opacity:.7;
-  padding:.3rem;
   background:#fefefe;
   cursor:pointer;
+  transition: 1s all;
 }
 
 .here-map-loading > div > small > p {
