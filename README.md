@@ -131,7 +131,9 @@ Display traffic information. You can omit this attribute since the map has is ow
 Enable a box with your content. If enabled add your content using the slot ```infoBox```
 
 ```
-<here-map ...>
+<here-map 
+    address="5th Ave,New York,USA"
+    :infoBox="true">
     <div slot="infoBox">
         <p><small>This is a demo of vue-here-map</small></p>
     </div>
@@ -142,13 +144,39 @@ Enable a box with your content. If enabled add your content using the slot ```in
 
 Set the infoBox position. Available options : *top left* , *top right* , *bottom left* , *bottom right*. Default is *bottom left*.
 
+
+```
+<here-map 
+    address="5th Ave,New York,USA"
+    :infoBox="true"
+    box="top left">
+    <div slot="infoBox">
+        <p><small>This is a demo of vue-here-map</small></p>
+    </div>
+</here-map>
+```
+
 **color** *(string)*
 
 Set the color of the marker(s). When using with destination assign 2 colors separated by comma. Default is *green,red*
 
+```
+<here-map 
+    address="5th Ave,New York,USA"
+    colors="blue,red"
+</here-map>
+```
+
 **interactive** *(true,**false**)*
 
 When enabled clicking on city names display the population (if available)
+
+```
+<here-map 
+    address="5th Ave,New York,USA"
+    :interactive="true">
+</here-map>
+```
 
 ## Examples
 
