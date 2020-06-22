@@ -5,6 +5,10 @@
 vue-here-map uses [here.com](here.com) map service and in order to work you need an APIKEY that you can get with a [FREEMIUM account](https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account).
 
 
+## Demo
+
+Check a [demo](https://swina.github.io/vue-here-map)
+
 ## Features
 
 - uses [here.com] map service (free up to 250K calls monthly)
