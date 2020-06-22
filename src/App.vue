@@ -3,10 +3,9 @@
     <here-map
       address="5th Ave,New York,USA" 
       destination="Park Ave.,New York,USA"
-      colors="blue,pink"
-      :traffic="true" 
+      colors="green,red"
       :infoBox="true" 
-      :ui="false"
+      :ui="true"
       box="bottom left">
       <div slot="infoBox">
         <p><small>This is a demo of vue-here-map</small></p>
