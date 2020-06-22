@@ -264,13 +264,15 @@ export default {
   },
   mounted(){
     this.$loadMapScript()
-    .then(() => {
+    .then((resp) => {
       this.init()
     })
     .catch(() => {
       console.log ( 'Map Scripts not loaded')
     })
-    
+    if ( this.$attrs.colors && this.$attrs.colors.split(',').length === 2 ){
+      this.colors = this.$attrs.colors.split(',')
+    }
   }
 }
 </script>

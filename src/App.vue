@@ -3,6 +3,7 @@
     <here-map
       address="5th Ave,New York,USA" 
       destination="Park Ave.,New York,USA"
+      colors="blue,pink"
       :traffic="true" 
       :infoBox="true" 
       :ui="false"

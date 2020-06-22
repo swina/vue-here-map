@@ -150,6 +150,37 @@ Set the color of the marker(s). When using with destination assign 2 colors sepa
 
 When enabled clicking on city names display the population (if available)
 
+## Examples
+
+*Autocomplete indicates that vue-here-map will calculate geocoords of an address.*
+
+### Simple map, no autocomplete
+
+```
+<here-map origin="41.89953,12.4914"/>
+```
+
+### Routing map, no autocomplete
+
+```
+<here-map origin="41.89953,12.4914" endpont="42.89953,10.4914/>
+```
+
+### Automplete map
+
+```
+<here-map address="5th Ave,New York,USA"/>
+```
+
+### Routing map with Autocomplete
+
+```
+<here-map address="5th Ave,New York,USA" destination="Park Ave.,New York,USA"/>
+```
+
+
+### Version 0.0.2
+- fixed markers color 
 
 ### Version 0.0.2
 - fixed minor issues
