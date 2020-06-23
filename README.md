@@ -2,7 +2,7 @@
 
 **vue-here-map** is an advanced vue component to render detailed map in your Vue component. 
 
-vue-here-map uses [here.com](here.com) map service and in order to work you need an APIKEY that you can get with a [FREEMIUM account](https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account).
+vue-here-map uses [here.com](https://here.com) map service and in order to work you need an APIKEY that you can get with a [FREEMIUM account](https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account).
 
 
 ## Demo
