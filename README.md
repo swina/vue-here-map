@@ -348,12 +348,12 @@ You will get a here-map tag to recreate the current map and objects.
 <here-map address="5th Ave,New York,USA" destination="Park Ave.,New York,USA"/>
 ```
 
-### Version 0.0.3
+### Version 0.0.4
 - added bubble attribute
 - added draw mode to add polyline/polygon/image overlay to map
 - export data to recreate same map objects included
 
-### Version 0.0.2
+### Version 0.0.3
 - fixed markers color 
 
 ### Version 0.0.2
